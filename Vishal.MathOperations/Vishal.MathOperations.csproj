@@ -1,9 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- NuGet metadata -->
+		<PackageId>MathOps.Calculator</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Vishal</Authors>
+		<Description>A simple .NET library to add two numbers via API.</Description>
+		<PackageTags>math;calculator;addition</PackageTags>
+		<RepositoryUrl>https://github.com/vishalpwaman123/MathOps.Calculator</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/vishalpwaman123/MathOps.Calculator</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>

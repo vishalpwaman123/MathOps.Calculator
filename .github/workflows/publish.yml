@@ -1,0 +1,30 @@
+name: publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore Vishal.MathOperations/Vishal.MathOperations.csproj
+
+      - name: Build
+        run: dotnet build Vishal.MathOperations/Vishal.MathOperations.csproj -c Release --no-restore
+
+      - name: Pack
+        run: dotnet pack Vishal.MathOperations/Vishal.MathOperations.csproj -c Release --no-build -o ./nupkg
+
+      - name: Push to NuGet.org
+        run: dotnet nuget push "./nupkg/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key trusted

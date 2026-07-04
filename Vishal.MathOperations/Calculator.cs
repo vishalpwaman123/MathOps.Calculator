@@ -1,6 +1,6 @@
 ﻿namespace Vishal.MathOperations
 {
-    public class Calculator
+    public class MathCalculator
     {
         public int Add(int a, int b) => a + b;
 
