@@ -27,5 +27,11 @@ jobs:
       - name: Pack
         run: dotnet pack Vishal.MathOperations/Vishal.MathOperations.csproj -c Release --no-build -o ./nupkg
 
+      - name: NuGet login (OIDC -> temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: vishaltechnology5
+
       - name: Push to NuGet.org
-        run: dotnet nuget push "./nupkg/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key trusted
+        run: dotnet nuget push "./nupkg/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
